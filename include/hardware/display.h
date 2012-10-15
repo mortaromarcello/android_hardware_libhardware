@@ -70,6 +70,11 @@ enum
 	DISPLAY_DEVICE_TV				= 2,
 	DISPLAY_DEVICE_HDMI				= 3,
 	DISPLAY_DEVICE_VGA				= 4,
+
+    /*当Display Mode为Signle模式时，确定*/
+    DISPLAY_FBINDISPLAYNO           = 0x10,
+    DISPLAY_PIXELMODE               = 0x11,
+    DISPLAY_SETMASTER				= 0x12
 };
 
 
@@ -150,6 +155,11 @@ enum
 	DISPLAY_VALID_HEIGHT           = 12
 };
 
+enum
+{
+	DISPLAY_MODE					= 0,
+	DISPLAY_DEVICE_MODE				= 1
+};
 
 enum
 {
@@ -157,6 +167,48 @@ enum
 	DISPLAY_FORMAT_PYUV420UVC = 1,
 };
 
+/* Image structure */
+struct display_output_t 
+{
+    /*output type*/
+	uint32_t			type;
+
+    /*framebuffer number 0:master,1:slave*/
+    uint32_t            fb_id;
+
+    /*fb width set*/
+    uint32_t            fb_width;
+
+    /*fb height set*/
+    uint32_t            fb_height;
+    
+    /* width */
+    uint32_t    		width;
+    
+    /* height */
+    uint32_t    		height;
+    
+    /* width */
+    uint32_t    		valid_width;
+    
+    /* height */
+    uint32_t    		valid_height;
+    
+    /* format DISPLAY_FORMAT_xxx */
+    int32_t     		format;
+    
+    int32_t				fbmode;
+    
+    int32_t				layermode;
+
+    int32_t             tvformat;
+    
+    int32_t				hotplug;
+    int32_t             isopen;
+    
+    /* handle to the image */
+    native_handle_t* 	handle;
+};
 
 struct display_rect_t
 {
