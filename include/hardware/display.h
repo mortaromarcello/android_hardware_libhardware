@@ -35,6 +35,24 @@ __BEGIN_DECLS
  */
 #define DISPLAY_HARDWARE_DISPLAY0 "display0"
 
+enum
+{
+    DISPLAY_FALSE = 0,
+    DISPLAY_TRUE,
+};
+
+enum
+{
+    DISPLAY_PLUGOUT = 0,
+    DISPLAY_PLUGIN,
+};
+
+enum
+{
+	DISPLAY_DEVICE_ON,
+	DISPLAY_DEVICE_PLUGIN_OFF,
+	DISPLAY_DEVICE_PLUGOUT
+};
 
 enum
 {
